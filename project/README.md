@@ -45,7 +45,7 @@
 
 - **Como** Agente
 - **Quero** modificar pedidos de aluguel
-- **Para que** eu possa mantê-los atualizados de acordo com a disponibilidade dos veículos e dos clientes..
+- **Para que** eu possa mantê-los atualizados de acordo com a disponibilidade dos veículos e dos clientes.
 
 ---
 
