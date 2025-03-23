@@ -30,13 +30,13 @@
 ---
 
 - **Como** Cliente
-- **Quero** quero consultar pedidos de aluguel
+- **Quero** consultar pedidos de aluguel
 - **Para que** eu possa tomar decisões de modificação ou cancelamento de um pedido.
 
 ---
 
 - **Como** Cliente
-- **Quero** quero cancelar pedidos de aluguel
+- **Quero** cancelar pedidos de aluguel
 - **Para que** eu possa desistir de uma solicitação.
 
 ---
@@ -44,25 +44,25 @@
 #### Agente
 
 - **Como** Agente
-- **Quero** quero modificar pedidos de aluguel
+- **Quero** modificar pedidos de aluguel
 - **Para que** eu possa mantê-los atualizados de acordo com a disponibilidade dos veículos e dos clientes..
 
 ---
 
 - **Como** Agente
-- **Quero** quero avaliar pedidos de aluguel
-- **Para que** para que eu possa aprovar ou reprovar um pedido de acordo com o perfil financeiro do cliente.
+- **Quero** avaliar pedidos de aluguel
+- **Para que** eu possa aprovar ou reprovar um pedido de acordo com o perfil financeiro do cliente.
 
 ---
 
 - **Como** Agente
-- **Quero** quero registrar o parecer do pedido 
-- **Para que** que o cliente saiba se seu pedido foi aprovado ou reprovado.
+- **Quero** registrar o parecer do pedido 
+- **Para que** o cliente saiba se seu pedido foi aprovado ou reprovado.
 
 ---
 
 - **Como** Agente
-- **Quero** quero encaminhar o pedido para execução do contrato
+- **Quero** encaminhar o pedido para execução do contrato
 - **Para que** o processo de aluguel do automóvel seja formalizado.
 - **Critérios de Aceitação:**
 - O contrato deve ter sido aprovado previamente.
@@ -70,7 +70,7 @@
 ---
 
 - **Como** Agente
-- **Quero** quero associar um pedido a um contrato de crédito
+- **Quero** associar um pedido a um contrato de crédito
 - **Para que** o cliente possa financiar o valor do aluguel.
 - **Critérios de Aceitação:**
 - O contrato deve ter sido aprovado previamente.
