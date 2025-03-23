@@ -19,25 +19,25 @@
 
 - **Como** Cliente
 - **Quero** quero introduzir pedidos de aluguel
-- **Para que** possa solicitar o aluguel de um automóvel.
+- **Para que** eu possa solicitar o aluguel de um automóvel.
   
 ---
 
 - **Como** Cliente
 - **Quero** modificar pedidos de aluguel
-- **Para que** possa ajustar as informações necessárias e mantê-las atualizadas.
+- **Para que** eu possa ajustar as informações necessárias e mantê-las atualizadas.
 
 ---
 
 - **Como** Cliente
 - **Quero** quero consultar pedidos de aluguel
-- **Para que** possa tomar decisões de modificação ou cancelamento de um pedido.
+- **Para que** eu possa tomar decisões de modificação ou cancelamento de um pedido.
 
 ---
 
 - **Como** Cliente
 - **Quero** quero cancelar pedidos de aluguel
-- **Para que** possa desistir de uma solicitação.
+- **Para que** eu possa desistir de uma solicitação.
 
 ---
 
