@@ -10,5 +10,25 @@
 
 - **Como** Usuário  
 - **Quero** realizar login no sistema utilizando minha senha  
-- **Para que** eu possa acessar as funcionalidades de forma segura e privada. 
+- **Para que** eu possa acessar as funcionalidades de forma segura e privada.
+
+---
+
+
+#### Cliente
+
+- **Como** Cliente
+- **Quero** quero introduzir pedidos de aluguel
+- **Para que** possa solicitar o aluguel de um automóvel.
+---
+- **Como** Cliente
+- **Quero** quero modificar pedidos de aluguel
+- **Para que** possa ajustar as informações necessárias e mantê-las atualizadas.
+
+---
+
+
+
+
+
 
