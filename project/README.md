@@ -24,7 +24,7 @@
 ---
 
 - **Como** Cliente
-- **Quero** quero modificar pedidos de aluguel
+- **Quero** modificar pedidos de aluguel
 - **Para que** possa ajustar as informações necessárias e mantê-las atualizadas.
 
 ---
