@@ -18,7 +18,7 @@
 #### Cliente
 
 - **Como** Cliente
-- **Quero** quero introduzir pedidos de aluguel
+- **Quero** introduzir pedidos de aluguel
 - **Para que** eu possa solicitar o aluguel de um automóvel.
   
 ---
