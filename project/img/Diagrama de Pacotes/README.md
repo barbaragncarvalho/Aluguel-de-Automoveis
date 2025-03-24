@@ -2,8 +2,8 @@
 
 package "Gestão de Pedidos e Contratos" {
   [Usuário]
-  [Cliente] <<interface>>
-  [Agente] <<interface>>
+  [Cliente] 
+  [Agente] 
   [Banco]
   [Empresa]
   [Pedido]
@@ -11,6 +11,8 @@ package "Gestão de Pedidos e Contratos" {
   [Automóvel]
   [ContratoCrédito]
   [Rendimento]
+  [OperacaoContrato]
+  [Avaliacao]
 }
 
 package "Construção Dinâmica de Páginas Web" {
