@@ -14,6 +14,10 @@
 
 ---
 
+- **Como** Usuário
+- **Quero** modificar pedidos de aluguel
+- **Para que** eu possa mantê-los atualizados de acordo com a disponibilidade dos veículos e dos clientes.
+
 
 #### Cliente
 
@@ -21,12 +25,6 @@
 - **Quero** introduzir pedidos de aluguel
 - **Para que** eu possa solicitar o aluguel de um automóvel.
   
----
-
-- **Como** Cliente
-- **Quero** modificar pedidos de aluguel
-- **Para que** eu possa ajustar as informações necessárias e mantê-las atualizadas.
-
 ---
 
 - **Como** Cliente
@@ -42,12 +40,6 @@
 ---
 
 #### Agente
-
-- **Como** Agente
-- **Quero** modificar pedidos de aluguel
-- **Para que** eu possa mantê-los atualizados de acordo com a disponibilidade dos veículos e dos clientes.
-
----
 
 - **Como** Agente
 - **Quero** avaliar pedidos de aluguel
@@ -72,8 +64,7 @@
 - **Como** Agente
 - **Quero** associar um pedido a um contrato de crédito
 - **Para que** o cliente possa financiar o valor do aluguel.
-- **Critérios de Aceitação:**
-- O contrato deve ter sido aprovado previamente.
+
 
 
 
