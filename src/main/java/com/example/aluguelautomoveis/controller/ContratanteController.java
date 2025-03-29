@@ -5,6 +5,8 @@ import com.example.aluguelautomoveis.repository.ContratanteRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +26,7 @@ public class ContratanteController {
     @PostMapping
     @Operation(summary = "Criar contratante", description = "Cadastra um novo contratante")
     @ApiResponse(responseCode = "201", description = "Contratante criado com sucesso")
-    public ResponseEntity<Contratante> criar(@RequestBody Contratante contratante) {
+    public ResponseEntity<Contratante> criar(@Valid @RequestBody Contratante contratante) {
         return new ResponseEntity<>(repository.save(contratante), HttpStatus.CREATED);
     }
 
@@ -49,9 +51,16 @@ public class ContratanteController {
     @Operation(summary = "Atualizar contratante", description = "Atualiza os dados de um contratante")
     @ApiResponse(responseCode = "200", description = "Contratante atualizado com sucesso")
     @ApiResponse(responseCode = "404", description = "Contratante não encontrado")
-    public ResponseEntity<Contratante> atualizar(@PathVariable Long id, @RequestBody Contratante atualizado) {
+    public ResponseEntity<Contratante> atualizar(@Valid @PathVariable Long id, @RequestBody Contratante atualizado) {
         return repository.findById(id)
                 .map(contratante -> {
+                    contratante.setNome(atualizado.getNome());
+                    contratante.setRua(atualizado.getRua());
+                    contratante.setBairro(atualizado.getBairro());
+                    contratante.setCep(atualizado.getCep());
+                    contratante.setNumero(atualizado.getNumero());
+                    contratante.setEmail(atualizado.getEmail());
+                    contratante.setSenha(atualizado.getSenha());
                     contratante.setRg(atualizado.getRg());
                     contratante.setCpf(atualizado.getCpf());
                     contratante.setProfissao(atualizado.getProfissao());

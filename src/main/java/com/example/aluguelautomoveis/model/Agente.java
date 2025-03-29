@@ -1,16 +1,13 @@
 package com.example.aluguelautomoveis.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+//import lombok.Data;
 
-@Data
+//@Data
 @Entity
 @Table(name = "agentes")
-public class Agente extends Usuario{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+@PrimaryKeyJoinColumn(name = "usuario_id")
+public abstract class Agente extends Usuario{
     /*@Column(nullable = false)
     private String nome;
 
