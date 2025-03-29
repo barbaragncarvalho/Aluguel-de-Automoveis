@@ -15,36 +15,29 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/clientes")
-@Tag(name = "Clientes", description = "Operações CRUD para gerenciamento de clientes") // <-- Anotação de classe
+@Tag(name = "Clientes", description = "Operações CRUD para gerenciamento de clientes")
 public class ClienteController {
 
     @Autowired
     private ClienteRepository clienteRepository;
 
-    // Criar cliente
     @PostMapping
-    @Operation( // <-- Anotação do método
-        summary = "Criar cliente",
-        description = "Cadastra um novo cliente no banco de dados"
-    )
-    @ApiResponse(responseCode = "201", description = "Cliente criado com sucesso") // <-- Resposta personalizada
+    @Operation(summary = "Criar cliente", description = "Cadastra um novo cliente")
+    @ApiResponse(responseCode = "201", description = "Cliente criado com sucesso")
     public ResponseEntity<Cliente> criarCliente(@RequestBody Cliente cliente) {
         Cliente novoCliente = clienteRepository.save(cliente);
         return new ResponseEntity<>(novoCliente, HttpStatus.CREATED);
     }
 
-    // Listar todos os clientes
     @GetMapping
-    @Operation(summary = "Listar clientes", description = "Retorna todos os clientes cadastrados")
-    @ApiResponse(responseCode = "200", description = "Lista de clientes recuperada com sucesso")
+    @Operation(summary = "Listar clientes", description = "Lista todos os clientes")
+    @ApiResponse(responseCode = "200", description = "Clientes listados com sucesso")
     public ResponseEntity<List<Cliente>> listarClientes() {
-        List<Cliente> clientes = clienteRepository.findAll();
-        return new ResponseEntity<>(clientes, HttpStatus.OK);
+        return new ResponseEntity<>(clienteRepository.findAll(), HttpStatus.OK);
     }
 
-    // Buscar cliente por ID
     @GetMapping("/{id}")
-    @Operation(summary = "Buscar cliente por ID", description = "Retorna um cliente específico com base no ID")
+    @Operation(summary = "Buscar cliente por ID", description = "Busca cliente pelo ID")
     @ApiResponse(responseCode = "200", description = "Cliente encontrado")
     @ApiResponse(responseCode = "404", description = "Cliente não encontrado")
     public ResponseEntity<Cliente> buscarClientePorId(@PathVariable Long id) {
@@ -53,9 +46,8 @@ public class ClienteController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    // Atualizar cliente
     @PutMapping("/{id}")
-    @Operation(summary = "Atualizar cliente", description = "Atualiza os dados de um cliente existente")
+    @Operation(summary = "Atualizar cliente", description = "Atualiza os dados de um cliente")
     @ApiResponse(responseCode = "200", description = "Cliente atualizado com sucesso")
     @ApiResponse(responseCode = "404", description = "Cliente não encontrado")
     public ResponseEntity<Cliente> atualizarCliente(@PathVariable Long id, @RequestBody Cliente clienteAtualizado) {
@@ -63,13 +55,11 @@ public class ClienteController {
                 .map(cliente -> {
                     cliente.setNome(clienteAtualizado.getNome());
                     cliente.setCpf(clienteAtualizado.getCpf());
-                    Cliente clienteSalvo = clienteRepository.save(cliente);
-                    return new ResponseEntity<>(clienteSalvo, HttpStatus.OK);
+                    return new ResponseEntity<>(clienteRepository.save(cliente), HttpStatus.OK);
                 })
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    // Deletar cliente
     @DeleteMapping("/{id}")
     @Operation(summary = "Deletar cliente", description = "Remove um cliente do banco de dados")
     @ApiResponse(responseCode = "204", description = "Cliente deletado com sucesso")
