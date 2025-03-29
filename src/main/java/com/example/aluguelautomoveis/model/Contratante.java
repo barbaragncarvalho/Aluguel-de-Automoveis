@@ -1,6 +1,7 @@
 package com.example.aluguelautomoveis.model;
 
 import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
