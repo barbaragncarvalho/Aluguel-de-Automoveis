@@ -50,8 +50,13 @@ public class AgenteController {
         return repository.findById(id)
                 .map(agente -> {
                     agente.setNome(atualizado.getNome());
-                    agente.setMatricula(atualizado.getMatricula());
-                    agente.setDepartamento(atualizado.getDepartamento());
+                    agente.setRua(atualizado.getRua());
+                    agente.setBairro(atualizado.getBairro());
+                    agente.setCep(atualizado.getCep());
+                    agente.setNumero(atualizado.getNumero());
+                    agente.setEmail(atualizado.getEmail());
+                    agente.setSenha(atualizado.getSenha());
+                    agente.setCnpj(atualizado.getCnpj());
                     return new ResponseEntity<>(repository.save(agente), HttpStatus.OK);
                 })
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
