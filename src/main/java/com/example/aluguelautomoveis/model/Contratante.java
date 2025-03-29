@@ -1,12 +1,13 @@
 package com.example.aluguelautomoveis.model;
 
 import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import java.util.List;
 
 @Data
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "contratantes")
 @PrimaryKeyJoinColumn(name = "usuario_id")
