@@ -54,7 +54,6 @@ public class UsuarioController {
                 .map(usuario -> {
                     usuario.setEmail(atualizado.getEmail());
                     usuario.setSenha(atualizado.getSenha());
-                    usuario.setPapel(atualizado.getPapel());
                     return new ResponseEntity<>(repository.save(usuario), HttpStatus.OK);
                 })
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
