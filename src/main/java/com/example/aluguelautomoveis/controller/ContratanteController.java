@@ -54,7 +54,7 @@ public class ContratanteController {
                 .map(contratante -> {
                     contratante.setRg(atualizado.getRg());
                     contratante.setCpf(atualizado.getCpf());
-                    contratante.setProfessor(atualizado.getProfessor());
+                    contratante.setProfissao(atualizado.getProfissao());
                     contratante.setRendimentos(atualizado.getRendimentos());
                     return new ResponseEntity<>(repository.save(contratante), HttpStatus.OK);
                 })

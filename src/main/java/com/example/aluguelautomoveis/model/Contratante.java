@@ -7,7 +7,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "contratantes")
-public class Contratante {
+public class Contratante extends Usuario{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,7 +19,7 @@ public class Contratante {
     private String cpf;
 
     @Column(nullable = false)
-    private String professor;
+    private String profissao;
 
     @ElementCollection
     private List<String> rendimentos;

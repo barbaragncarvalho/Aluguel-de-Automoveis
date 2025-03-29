@@ -6,17 +6,20 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "agentes")
-public class Agente {
+public class Agente extends Usuario{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    /*@Column(nullable = false)
     private String nome;
 
     @Column(unique = true, nullable = false)
     private String matricula;
 
     @Column(nullable = false)
-    private String departamento;
+    private String departamento;*/
+
+    @Column(unique = true, nullable = false)
+    private String cnpj;
 }
