@@ -7,16 +7,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "agentes")
 @PrimaryKeyJoinColumn(name = "usuario_id")
-public abstract class Agente extends Usuario{
-    /*@Column(nullable = false)
-    private String nome;
-
-    @Column(unique = true, nullable = false)
-    private String matricula;
-
-    @Column(nullable = false)
-    private String departamento;*/
-
+public abstract class Agente extends Usuario {
     @Column(unique = true, nullable = false)
     private String cnpj;
 }

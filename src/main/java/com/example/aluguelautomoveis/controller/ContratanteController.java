@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
-//@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/contratantes")
 @Tag(name = "Contratantes", description = "Operações CRUD para contratantes")
@@ -32,7 +34,7 @@ public class ContratanteController {
     public ResponseEntity<Contratante> criar(@Valid @RequestBody Contratante contratante) {
         if (contratante.getRendimentos() != null) {
             List<Rendimento> rendimentos = new ArrayList<>(contratante.getRendimentos());
-            contratante.getRendimentos().clear(); 
+            contratante.getRendimentos().clear();
             for (Rendimento rendimento : rendimentos) {
                 contratante.cadastrarRendimento(rendimento);
             }
@@ -75,14 +77,31 @@ public class ContratanteController {
                     contratante.setRg(atualizado.getRg());
                     contratante.setCpf(atualizado.getCpf());
                     contratante.setProfissao(atualizado.getProfissao());
-                    
-                    contratante.getRendimentos().clear();
+
+                    Map<Long, Rendimento> rendimentosExistentes = contratante.getRendimentos()
+                            .stream()
+                            .filter(rendimento -> rendimento.getId() != null)
+                            .collect(Collectors.toMap(Rendimento::getId, Function.identity()));
+
+                    List<Rendimento> rendimentosAtualizados = new ArrayList<>();
+
                     if (atualizado.getRendimentos() != null) {
-                        for (Rendimento r : atualizado.getRendimentos()) {
-                            contratante.cadastrarRendimento(r);
+                        for (Rendimento novoRendimento : atualizado.getRendimentos()) {
+                            if (novoRendimento.getId() != null
+                                    && rendimentosExistentes.containsKey(novoRendimento.getId())) {
+                                Rendimento existente = rendimentosExistentes.get(novoRendimento.getId());
+                                existente.setValorRendimento(novoRendimento.getValorRendimento());
+                                existente.setEntidadeEmpregadora(novoRendimento.getEntidadeEmpregadora());
+                                rendimentosAtualizados.add(existente);
+                            } else {
+                                contratante.cadastrarRendimento(novoRendimento);
+                                rendimentosAtualizados.add(novoRendimento);
+                            }
                         }
                     }
-                    
+                    contratante.getRendimentos().clear();
+                    contratante.getRendimentos().addAll(rendimentosAtualizados);
+
                     return new ResponseEntity<>(repository.save(contratante), HttpStatus.OK);
                 })
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));

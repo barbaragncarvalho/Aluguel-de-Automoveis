@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -22,21 +24,13 @@ public class Contratante extends Usuario {
     @Column(nullable = false)
     private String profissao;
 
-    /*
-     * @ElementCollection
-     * private List<Rendimento> rendimentos;
-     */
-
-     @OneToMany(
-        mappedBy = "contratante", 
-        cascade = CascadeType.ALL, 
-        orphanRemoval = true
-    )
+    @OneToMany(mappedBy = "contratante", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Rendimento> rendimentos = new ArrayList<>();
 
     public void cadastrarRendimento(Rendimento rendimento) {
-            this.rendimentos.add(rendimento);    
-            rendimento.setContratante(this); 
+        this.rendimentos.add(rendimento);
+        rendimento.setContratante(this);
     }
 
 }

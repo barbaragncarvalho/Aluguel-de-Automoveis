@@ -1,5 +1,7 @@
 package com.example.aluguelautomoveis.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -21,17 +23,10 @@ public class Rendimento {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "contratante_id", nullable = false)
+    @JsonBackReference
     private Contratante contratante;
 
     public void setContratante(Contratante contratante) {
         this.contratante = contratante;
     }
-
-    /*public boolean cadastrarRendimento(List<Rendimento> rendimentos, Contratante contratante) {
-        if (rendimentos.size() >= MAX_RENDIMENTO) {
-            return false;
-        }
-        this.setContratante(contratante);
-        return true;
-    }*/
 }
