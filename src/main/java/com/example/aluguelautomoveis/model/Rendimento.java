@@ -1,9 +1,9 @@
 package com.example.aluguelautomoveis.model;
 
-import java.util.List;
-
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "rendimentos")
 public class Rendimento {
@@ -27,11 +27,11 @@ public class Rendimento {
         this.contratante = contratante;
     }
 
-    public boolean cadastrarRendimento(List<Rendimento> rendimentos, Contratante contratante) {
+    /*public boolean cadastrarRendimento(List<Rendimento> rendimentos, Contratante contratante) {
         if (rendimentos.size() >= MAX_RENDIMENTO) {
             return false;
         }
         this.setContratante(contratante);
         return true;
-    }
+    }*/
 }

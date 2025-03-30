@@ -34,12 +34,9 @@ public class Contratante extends Usuario {
     )
     private List<Rendimento> rendimentos = new ArrayList<>();
 
-    public String cadastrarRendimento(Rendimento rendimento) {
-        if(rendimento.cadastrarRendimento(rendimentos, this)){
-            rendimentos.add(rendimento);
-            return "Rendimento foi cadastrado!";
-        }
-        return "Rendimento não foi cadastrado!";
+    public void cadastrarRendimento(Rendimento rendimento) {
+            this.rendimentos.add(rendimento);    
+            rendimento.setContratante(this); 
     }
 
 }

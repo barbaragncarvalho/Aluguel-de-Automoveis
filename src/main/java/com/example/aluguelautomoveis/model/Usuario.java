@@ -27,6 +27,9 @@ public abstract class Usuario {
     @Column(nullable = false)
     private int numero;
 
+    @Column(nullable = true)
+    private String opcional;
+
     @Column(unique = true, nullable = false)
     private String email;
 

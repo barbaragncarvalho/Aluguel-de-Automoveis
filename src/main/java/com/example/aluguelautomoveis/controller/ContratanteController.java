@@ -1,6 +1,7 @@
 package com.example.aluguelautomoveis.controller;
 
 import com.example.aluguelautomoveis.model.Contratante;
+import com.example.aluguelautomoveis.model.Rendimento;
 import com.example.aluguelautomoveis.repository.ContratanteRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -12,9 +13,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+//@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/contratantes")
 @Tag(name = "Contratantes", description = "Operações CRUD para contratantes")
@@ -27,6 +30,13 @@ public class ContratanteController {
     @Operation(summary = "Criar contratante", description = "Cadastra um novo contratante")
     @ApiResponse(responseCode = "201", description = "Contratante criado com sucesso")
     public ResponseEntity<Contratante> criar(@Valid @RequestBody Contratante contratante) {
+        if (contratante.getRendimentos() != null) {
+            List<Rendimento> rendimentos = new ArrayList<>(contratante.getRendimentos());
+            contratante.getRendimentos().clear(); 
+            for (Rendimento rendimento : rendimentos) {
+                contratante.cadastrarRendimento(rendimento);
+            }
+        }
         return new ResponseEntity<>(repository.save(contratante), HttpStatus.CREATED);
     }
 
@@ -59,12 +69,20 @@ public class ContratanteController {
                     contratante.setBairro(atualizado.getBairro());
                     contratante.setCep(atualizado.getCep());
                     contratante.setNumero(atualizado.getNumero());
+                    contratante.setOpcional(atualizado.getOpcional());
                     contratante.setEmail(atualizado.getEmail());
                     contratante.setSenha(atualizado.getSenha());
                     contratante.setRg(atualizado.getRg());
                     contratante.setCpf(atualizado.getCpf());
                     contratante.setProfissao(atualizado.getProfissao());
-                    contratante.setRendimentos(atualizado.getRendimentos());
+                    
+                    contratante.getRendimentos().clear();
+                    if (atualizado.getRendimentos() != null) {
+                        for (Rendimento r : atualizado.getRendimentos()) {
+                            contratante.cadastrarRendimento(r);
+                        }
+                    }
+                    
                     return new ResponseEntity<>(repository.save(contratante), HttpStatus.OK);
                 })
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
