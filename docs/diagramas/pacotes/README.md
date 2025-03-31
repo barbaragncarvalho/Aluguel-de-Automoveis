@@ -30,26 +30,18 @@ package "com.example.aluguelautomoveis" {
         [Contratante.java]
         [Usuario.java]
     }
-    
-    package dto <<Layer>> {
-        [AutomovelDTO.java]
-        [ClienteDTO.java]
-        [ContratanteDTO.java]
-    }
 package "View" <<Layer>> {
 
     }
 }
 
 
-controller --> repository
-controller --> service
-service --> repository
-repository --> model
-controller --> dto
-dto .up.> model 
-controller --> "View"
-controller --> "model"
-model --> enumerators
+controller .up.> repository
+controller .up.> service
+service .up.> repository
+repository .up.> model
+controller .up.> "View"
+controller .up.> "model"
+model .up.> enumerators
 
 @enduml
