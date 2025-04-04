@@ -3,7 +3,7 @@ package com.example.aluguelautomoveis.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Data //!
+@Data
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "usuarios")
