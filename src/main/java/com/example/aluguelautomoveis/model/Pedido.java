@@ -21,12 +21,15 @@ public class Pedido {
     @Column(nullable = false)
     private StatusPedido status;
 
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "contratante_id", nullable = false)
     private Contratante contratante;
 
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "automovel_id", nullable = false)
     private Automovel automovel;
 
-    @Column(nullable = true)
+    @OneToOne
+    @JoinColumn(name = "contrato_id", nullable = true)
     private Contrato contrato;
 }

@@ -7,7 +7,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "pessoas")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "tipo")
 @JsonSubTypes({
     @JsonSubTypes.Type(value = Cliente.class, name = "cliente"),
