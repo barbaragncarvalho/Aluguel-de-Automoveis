@@ -6,15 +6,8 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "clientes")
-public class Cliente {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false)
-    private String nome;
-
+@PrimaryKeyJoinColumn(name = "pessoa_id")
+public class Cliente extends Pessoa{
     @Column(unique = true, nullable = false)
     private String cpf;
 }
