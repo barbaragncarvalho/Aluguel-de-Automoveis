@@ -6,5 +6,5 @@ import jakarta.persistence.*;
 @Table(name = "empresas")
 @PrimaryKeyJoinColumn(name = "agente_id")
 public class Empresa extends Agente{
-    
+
 }

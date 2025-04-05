@@ -7,14 +7,7 @@ import lombok.Data;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "usuarios")
-public abstract class Usuario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false)
-    private String nome;
-
+public abstract class Usuario extends Pessoa{
     @Column(nullable = false)
     private String rua;
 
@@ -29,13 +22,10 @@ public abstract class Usuario {
 
     @Column(nullable = true)
     private String opcional;
-
+    
     @Column(unique = true, nullable = false)
     private String email;
 
     @Column(nullable = false)
     private String senha;
-
-    /*@Column(nullable = false)
-    private String papel;*/
 }
