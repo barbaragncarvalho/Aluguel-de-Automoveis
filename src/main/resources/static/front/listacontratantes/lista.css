@@ -41,14 +41,16 @@ nav a:hover {
     flex-direction: column;
     align-items: center;
     margin-top: 35px;
+    padding: 30px;
 }
 
-thead th {
-    padding: 12px 15px;
-}
 
 tbody td {
     padding: 12px 25px;
+}
+
+.tabela b {
+    font-size: 25px;
 }
 
 tbody td button {

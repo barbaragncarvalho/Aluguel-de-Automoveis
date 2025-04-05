@@ -30,7 +30,7 @@ function exibeClientes(clientes) {
     btn.addEventListener("click", () => {
       const idCliente = btn.getAttribute("data-id");
       localStorage.setItem("clienteId", idCliente);
-      window.location.href = "../atualizar/atualizar.html";
+      window.location.href = "../atualizarcontratante/atualizar.html";
     });
   });
 

@@ -106,7 +106,7 @@ btn.addEventListener("click", async (ev) => {
         }
 
         alert("Cliente atualizado com sucesso! ;)");
-        window.location.href = "../listaclientes/lista.html";
+        window.location.href = "../listacontratantes/lista.html";
     } catch (error) {
         alert("Erro na requisição de atualizar. Tente novamente, por favor ;)");
     }
