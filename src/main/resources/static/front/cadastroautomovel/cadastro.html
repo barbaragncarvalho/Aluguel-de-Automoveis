@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cadastrar automovel</title>
+    <link rel="stylesheet" href="cadastro.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../cadastrocontratante/cadastro.html">Cadastrar Cliente</a></li>
+                <li><a href="../listacontratantes/lista.html">Lista de Clientes</a></li>
+                <li><a href="cadastroagente.html">Cadastrar Agente</a></li>
+                <!--<li><a href="">Realizar pedido</a></li>
+                <li><a href="">Pedidos</a></li>-->
+            </ul>
+        </nav>
+    </header>
+
+    <div class="titulo">
+        <h1>Cadastro de automóveis</h1>
+    </div>
+
+    <div class="principal">
+        <div class="form-container">
+            <form action="">
+                <div class="row">
+                    <div>
+                        <label for="matricula">Matricula:</label>
+                        <input type="text" id="matricula" name="matricula" required>
+                    </div>
+                    <div>
+                        <label for="placa">Placa:</label>
+                        <input type="text" id="placa" name="placa" required>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div>
+                        <label for="modelo">Modelo:</label>
+                        <input type="text" id="modelo" name="modelo" required>
+                    </div>
+                    <div>
+                        <label for="marca">Marca:</label>
+                        <input type="text" id="marca" name="marca" required>
+                    </div>
+                    <div>
+                        <label for="ano">Ano:</label>
+                        <input type="number" id="ano" name="ano">
+                    </div>
+                </div>
+
+
+                <button id="btnCadastrar">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
