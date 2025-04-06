@@ -1,6 +1,7 @@
 package com.example.aluguelautomoveis.controller;
 
 import com.example.aluguelautomoveis.enums.StatusPedido;
+import com.example.aluguelautomoveis.model.Automovel;
 import com.example.aluguelautomoveis.model.Pedido;
 import com.example.aluguelautomoveis.repository.PedidoRepository;
 import io.swagger.v3.oas.annotations.Operation;
@@ -61,8 +62,10 @@ public class PedidoController {
         return repository.findById(id)
                 .map(pedido -> {
                     pedido.setStatus(pedidoAtualizado.getStatus());
-                    pedido.setAutomovel(pedidoAtualizado.getAutomovel());
-                    pedido.setContratante(pedidoAtualizado.getContratante());
+                    if (pedidoAtualizado.getStatus() == StatusPedido.CANCELADO) {
+                        Automovel automovel = pedido.getAutomovel();
+                        automovel.setDisponivel(true);
+                    }
                     pedido.setContrato(pedidoAtualizado.getContrato());
                     Pedido pedidoAtual = repository.save(pedido);
                     return new ResponseEntity<>(pedidoAtual, HttpStatus.OK);
