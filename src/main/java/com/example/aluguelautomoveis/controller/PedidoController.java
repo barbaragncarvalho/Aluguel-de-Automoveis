@@ -60,7 +60,7 @@ public class PedidoController {
     public ResponseEntity<Pedido> atualizar(@PathVariable Long id, @Valid @RequestBody Pedido pedidoAtualizado) {
         return repository.findById(id)
                 .map(pedido -> {
-                    // pedido.setStatus(pedidoAtualizado.getStatus());
+                    pedido.setStatus(pedidoAtualizado.getStatus());
                     pedido.setAutomovel(pedidoAtualizado.getAutomovel());
                     pedido.setContratante(pedidoAtualizado.getContratante());
                     pedido.setContrato(pedidoAtualizado.getContrato());

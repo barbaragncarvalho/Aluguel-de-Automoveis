@@ -20,10 +20,26 @@ function exibeClientes(clientes) {
     const tr = document.createElement("tr");
     tr.innerHTML = `
         <td>${cliente.nome}</td>
+        <td><a href="../pedidoscliente/pedidos.html"><button class="btnMeusPedidos" data-id="${cliente.id}">Pedidos</button></a></td>
+        <td><a href="../automoveisdisponiveis/automoveis.html"><button class="btnNovoPedido" data-id="${cliente.id}">Novo Pedido</button></a></td>
         <td><button class="btnAtualizar" data-id="${cliente.id}">Atualizar</button></td>
         <td><button class="btnExcluir" data-id="${cliente.id}">Excluir</button></td>
       `;
     tbody.appendChild(tr);
+  });
+
+  document.querySelectorAll(".btnMeusPedidos").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const idCliente = btn.getAttribute("data-id");
+      localStorage.setItem("clienteId", idCliente);
+    });
+  });
+
+  document.querySelectorAll(".btnNovoPedido").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const idCliente = btn.getAttribute("data-id");
+      localStorage.setItem("clienteId", idCliente);
+    });
   });
 
   document.querySelectorAll(".btnAtualizar").forEach((btn) => {
