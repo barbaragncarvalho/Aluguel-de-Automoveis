@@ -12,9 +12,9 @@ import lombok.Data;
 @Table(name = "pessoas")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "tipo")
 @JsonSubTypes({
-    @JsonSubTypes.Type(value = Cliente.class, name = "cliente"),
-    @JsonSubTypes.Type(value = Banco.class, name = "banco"),
-    @JsonSubTypes.Type(value = Empresa.class, name = "empresa")
+        @JsonSubTypes.Type(value = Cliente.class, name = "cliente"),
+        @JsonSubTypes.Type(value = Banco.class, name = "banco"),
+        @JsonSubTypes.Type(value = Empresa.class, name = "empresa")
 })
 public abstract class Pessoa {
     @Id
@@ -23,4 +23,21 @@ public abstract class Pessoa {
 
     @Column(nullable = false)
     private String nome;
+
+    @Transient
+    private String tipo;
+
+    public String getTipo() {
+        if (this instanceof Cliente)
+            return "cliente";
+        if (this instanceof Banco)
+            return "banco";
+        if (this instanceof Empresa)
+            return "empresa";
+        return null;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 }

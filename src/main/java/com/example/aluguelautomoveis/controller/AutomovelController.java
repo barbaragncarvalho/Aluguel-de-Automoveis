@@ -1,7 +1,12 @@
 package com.example.aluguelautomoveis.controller;
 
 import com.example.aluguelautomoveis.model.Automovel;
+import com.example.aluguelautomoveis.model.Pessoa;
 import com.example.aluguelautomoveis.repository.AutomovelRepository;
+import com.example.aluguelautomoveis.repository.BancoRepository;
+import com.example.aluguelautomoveis.repository.ClienteRepository;
+import com.example.aluguelautomoveis.repository.EmpresaRepository;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,11 +25,39 @@ import java.util.Optional;
 public class AutomovelController {
     @Autowired
     private AutomovelRepository repository;
+    @Autowired
+    private BancoRepository bancoRepository;
+    @Autowired
+    private EmpresaRepository empresaRepository;
+    @Autowired
+    private ClienteRepository clienteRepository;
 
     @PostMapping
     @Operation(summary = "Criar automóvel", description = "Cadastra um novo automóvel")
     @ApiResponse(responseCode = "201", description = "Automóvel criado com sucesso")
     public ResponseEntity<Automovel> criar(@Valid @RequestBody Automovel automovel) {
+        Pessoa proprietario = null;
+        String tipo = automovel.getProprietario().getTipo();
+        Long id = automovel.getProprietario().getId();
+
+        switch (tipo) {
+            case "banco":
+                proprietario = bancoRepository.findById(id)
+                        .orElseThrow(() -> new RuntimeException("Banco não encontrado"));
+                break;
+            case "empresa":
+                proprietario = empresaRepository.findById(id)
+                        .orElseThrow(() -> new RuntimeException("Empresa não encontrada"));
+                break;
+            case "cliente":
+                proprietario = clienteRepository.findById(id)
+                        .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+                break;
+            default:
+                throw new RuntimeException("Tipo de proprietário inválido");
+        }
+
+        automovel.setProprietario(proprietario);
         return new ResponseEntity<>(repository.save(automovel), HttpStatus.CREATED);
     }
 

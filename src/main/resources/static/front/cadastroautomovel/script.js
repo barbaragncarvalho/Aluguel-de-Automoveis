@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const proprietarioId = localStorage.getItem("proprietarioId");
+    console.log(proprietarioId)
 
     const btnCadastrar = document.getElementById("btnCadastrar");
     btnCadastrar.addEventListener("click", async (ev) => {

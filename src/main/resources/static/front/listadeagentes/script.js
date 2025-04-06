@@ -29,7 +29,7 @@ function exibeAgentes(agentes) {
     document.querySelectorAll(".btnCadAutomovel").forEach((btn) => {
         btn.addEventListener("click", () => {
             const idAgente = btn.getAttribute("data-id");
-            localStorage.setItem("idAgente", idAgente);
+            localStorage.setItem("proprietarioId", idAgente);
             window.location.href = "../cadastroautomovel/cadastro.html";
         });
     });
@@ -37,7 +37,7 @@ function exibeAgentes(agentes) {
     document.querySelectorAll(".btnPedidos").forEach((btn) => {
         btn.addEventListener("click", () => {
             const idAgente = btn.getAttribute("data-id");
-            localStorage.setItem("idAgente", idAgente);
+            localStorage.setItem("proprietarioId", idAgente);
             window.location.href = "../pedidosagente/pedidos.html";
         });
     });

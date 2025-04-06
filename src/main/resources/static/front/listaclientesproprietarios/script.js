@@ -30,7 +30,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   botoes.forEach((btn) => {
     btn.addEventListener("click", (ev) => {
       const clienteId = btn.dataset.id;
-      localStorage.setItem("clienteId", clienteId);
+      localStorage.setItem("proprietarioId", clienteId);
     });
   });
   }
