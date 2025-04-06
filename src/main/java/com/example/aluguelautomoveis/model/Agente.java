@@ -1,9 +1,11 @@
 package com.example.aluguelautomoveis.model;
 
 import jakarta.persistence.*;
-//import lombok.Data;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-//@Data
+@Data
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "agentes")
 @PrimaryKeyJoinColumn(name = "usuario_id")

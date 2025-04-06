@@ -52,6 +52,11 @@ public class UsuarioController {
     public ResponseEntity<Usuario> atualizar(@PathVariable Long id, @RequestBody Usuario atualizado) {
         return repository.findById(id)
                 .map(usuario -> {
+                    usuario.setRua(atualizado.getRua());
+                    usuario.setBairro(atualizado.getBairro());
+                    usuario.setCep(atualizado.getCep());
+                    usuario.setNumero(atualizado.getNumero());
+                    usuario.setOpcional(atualizado.getOpcional());
                     usuario.setEmail(atualizado.getEmail());
                     usuario.setSenha(atualizado.getSenha());
                     return new ResponseEntity<>(repository.save(usuario), HttpStatus.OK);
