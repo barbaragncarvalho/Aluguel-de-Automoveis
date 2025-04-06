@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>avaliar pedido</title>
+    <link rel="stylesheet" href="avaliar.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../cadastrocontratante/cadastro.html">Cadastrar Cliente</a></li>
+                <li><a href="../listacontratantes/lista.html">Lista de Clientes</a></li>
+                <li><a href="../tipousuario/tipousuario.html">Proprietários</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="titulo">
+        <h1>Avaliar Pedido</h1>
+    </div>
+
+    <div class="principal">
+        <div class="form-container">
+            <form action="">
+                <div class="row">
+                    <div>
+                        <label for="data">Data:</label>
+                        <input type="date" id="data" name="data" required>
+                    </div>
+                    <div>
+                        <label for="resultado">Resultado:</label>
+                        <select name="resultado" id="resultado">
+                            <option value="" disabled selected>Escolha uma opção</option>
+                            <option value="APROVADO">Aprovar</option>
+                            <option value="REPROVADO">Reprovar</option>
+                            <option value="CANCELADO">Cancelar</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <label for="observacoes">Observações:</label><br>
+                        <textarea id="observacoes" name="observacoes" rows="5" cols="40"
+                            placeholder="Digite aqui..."></textarea>
+                    </div>
+                </div>
+
+
+                <button id="btnAvaliar">Avaliar</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

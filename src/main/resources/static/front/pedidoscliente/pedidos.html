@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedidos</title>
+  <link rel="stylesheet" href="pedidos.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../cadastrocontratante/cadastro.html">Cadastrar Cliente</a></li>
+        <li><a href="../listacontratantes/lista.html">Lista de Clientes</a></li>
+        <li><a href="../tipousuario/tipousuario.html">Proprietários</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="informacoes">
+    <h2>Cliente:</h2>
+    <p>Nome do cliente</p> 
+  </div>
+  <div class="tabela">
+    <table>
+      <caption><b>Pedidos</b></caption>
+
+      <tbody id="tabelaPedidos">
+       <tr>
+          <td><strong>Data do Pedido</strong></td>
+          <td><strong>Automóvel</strong></td>
+          <td><strong>Status</strong></td>
+        </tr>
+
+        <tr>
+          <td>05/04/2025</td>
+          <td>Corolla XEi 2.0</td>
+          <td>Em análise</td>
+          <td><button>Cancelar</button></td>
+        </tr>
+
+        <tr>
+            <td>05/04/2025</td>
+            <td>Civic Touring 1.5 Turbo</td>
+            <td>Aprovado</td>
+            <td><button>Cancelar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+ 
+  <script src="script.js"></script>
+</body>
+
+</html>
