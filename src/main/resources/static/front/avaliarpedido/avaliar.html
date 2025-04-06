@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cadastrar automovel</title>
-    <link rel="stylesheet" href="cadastro.css">
+    <title>avaliar pedido</title>
+    <link rel="stylesheet" href="avaliar.css">
 </head>
 
 <body>
@@ -22,7 +22,7 @@
     </header>
 
     <div class="titulo">
-        <h1>Cadastro de automóveis</h1>
+        <h1>Avaliar Pedido</h1>
     </div>
 
     <div class="principal">
@@ -30,33 +30,30 @@
             <form action="">
                 <div class="row">
                     <div>
-                        <label for="matricula">Matricula:</label>
-                        <input type="text" id="matricula" name="matricula" required>
+                        <label for="data">Data:</label>
+                        <input type="date" id="data" name="data" required>
                     </div>
                     <div>
-                        <label for="placa">Placa:</label>
-                        <input type="text" id="placa" name="placa" required>
+                        <label for="resultado">Resultado:</label>
+                        <select name="resultado" id="resultado">
+                            <option value="" disabled selected>Escolha uma opção</option>
+                            <option value="APROVADO">Aprovar</option>
+                            <option value="REPROVADO">Reprovar</option>
+                            <option value="CANCELADO">Cancelar</option>
+                        </select>
+
                     </div>
                 </div>
-
-
                 <div class="row">
                     <div>
-                        <label for="modelo">Modelo:</label>
-                        <input type="text" id="modelo" name="modelo" required>
-                    </div>
-                    <div>
-                        <label for="marca">Marca:</label>
-                        <input type="text" id="marca" name="marca" required>
-                    </div>
-                    <div>
-                        <label for="ano">Ano:</label>
-                        <input type="number" id="ano" name="ano">
+                        <label for="observacoes">Observações:</label><br>
+                        <textarea id="observacoes" name="observacoes" rows="5" cols="40"
+                            placeholder="Digite aqui..."></textarea>
                     </div>
                 </div>
 
 
-                <button id="btnCadastrar">Cadastrar</button>
+                <button id="btnAvaliar">Avaliar</button>
             </form>
         </div>
     </div>

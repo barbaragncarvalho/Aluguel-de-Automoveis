@@ -40,7 +40,7 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 35px;
+    margin-top: 10px;
     padding: 30px;
 }
 
@@ -71,14 +71,16 @@ button:hover {
     background-color: rgb(100, 77, 157);
 }
 
-.novoAgente {
-    position: fixed;
-    top: 100px;       
-    right: 20px;     
-    z-index: 1000;  
-    padding: 15px;  
+.informacoes {
+    text-align: center;
+    margin-top: 30px;
 }
 
-.novoAgente button {
-    padding: 15px;
+.informacoes h2 {
+    font-size: 25px;
+}
+
+.informacoes p {
+    padding: 20px;
+    font-size: 25px;
 }

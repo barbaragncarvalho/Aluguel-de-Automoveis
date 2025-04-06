@@ -71,14 +71,3 @@ button:hover {
     background-color: rgb(100, 77, 157);
 }
 
-.novoAgente {
-    position: fixed;
-    top: 100px;       
-    right: 20px;     
-    z-index: 1000;  
-    padding: 15px;  
-}
-
-.novoAgente button {
-    padding: 15px;
-}
