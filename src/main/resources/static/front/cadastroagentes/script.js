@@ -13,11 +13,21 @@ btn.addEventListener("click", async (ev) => {
     const numero = parseInt(document.getElementById("numero").value);
     const opcional = document.getElementById("opcional").value;
 
+    const tipoAgente = document.getElementById("tipoAgente").value;
+
     if (!validacao(nome, email, senha, cnpj, rua, bairro, cep, numero)) {
         return;
     }
 
+    let url = "";
+    if (tipoAgente === "empresa") {
+        url = "http://localhost:8080/api/empresas";
+    } else {
+        url = "http://localhost:8080/api/bancos";
+    }
+
     const dadosAgente = {
+        tipo: tipoAgente,
         nome: nome,
         rua: rua,
         bairro: bairro,
@@ -30,7 +40,7 @@ btn.addEventListener("click", async (ev) => {
     };
 
     try {
-        const response = await fetch("http://localhost:8080/api/agentes", {
+        const response = await fetch(url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
