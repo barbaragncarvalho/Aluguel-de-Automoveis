@@ -14,7 +14,8 @@ import lombok.Data;
 @JsonSubTypes({
         @JsonSubTypes.Type(value = Cliente.class, name = "cliente"),
         @JsonSubTypes.Type(value = Banco.class, name = "banco"),
-        @JsonSubTypes.Type(value = Empresa.class, name = "empresa")
+        @JsonSubTypes.Type(value = Empresa.class, name = "empresa"),
+        @JsonSubTypes.Type(value = Contratante.class, name = "contratante"),
 })
 public abstract class Pessoa {
     @Id

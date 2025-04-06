@@ -39,6 +39,7 @@ btn.addEventListener("click", async (ev) => {
     }
 
     const dadosCliente = {
+        tipo: "contratante",
         nome: nome,
         rua: rua,
         bairro: bairro,
@@ -86,7 +87,7 @@ btn.addEventListener("click", async (ev) => {
         document.getElementById("entidade2").value = "";
         document.getElementById("rendimento3").value = "";
         document.getElementById("entidade3").value = "";
-        window.location.href = "../listaclientes/lista.html";
+        window.location.href = "../listacontratantes/lista.html";
     } catch (error) {
         alert("Erro na requisição de cadastro. Tente novamente, por favor ;)");
     }
