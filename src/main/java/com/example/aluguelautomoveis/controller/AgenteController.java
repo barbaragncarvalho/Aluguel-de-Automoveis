@@ -36,6 +36,16 @@ public class AgenteController {
         return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/count")
+    @Operation(
+        summary = "Contar agentes", 
+        description = "Retorna o total de agentes cadastrados"
+    )
+    @ApiResponse(responseCode = "200", description = "Contagem realizada com sucesso")
+    public ResponseEntity<Long> contarClientes() {
+        return ResponseEntity.ok(repository.count());
+    }
+
     @GetMapping("/{id}")
     @Operation(summary = "Buscar agente por ID", description = "Busca agente pelo ID")
     @ApiResponse(responseCode = "200", description = "agente encontrado")
