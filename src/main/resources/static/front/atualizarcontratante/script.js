@@ -77,6 +77,7 @@ btn.addEventListener("click", async (ev) => {
     }
 
     const dadosCliente = {
+        tipo: "contratante",
         nome: nome,
         rua: rua,
         bairro: bairro,
