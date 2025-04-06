@@ -21,11 +21,11 @@ public class Pedido {
     @Column(nullable = false)
     private StatusPedido status;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "contratante_id", nullable = false)
     private Contratante contratante;
-
-    @ManyToOne
+    
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "automovel_id", nullable = false)
     private Automovel automovel;
 

@@ -36,6 +36,16 @@ public class ClienteController {
         return new ResponseEntity<>(clienteRepository.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/count")
+    @Operation(
+        summary = "Contar clientes", 
+        description = "Retorna o total de clientes cadastrados"
+    )
+    @ApiResponse(responseCode = "200", description = "Contagem realizada com sucesso")
+    public ResponseEntity<Long> contarClientes() {
+        return ResponseEntity.ok(clienteRepository.count());
+    }
+
     @GetMapping("/{id}")
     @Operation(summary = "Buscar cliente por ID", description = "Busca cliente pelo ID")
     @ApiResponse(responseCode = "200", description = "Cliente encontrado")
