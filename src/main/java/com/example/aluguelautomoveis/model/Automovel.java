@@ -29,7 +29,7 @@ public class Automovel {
     @Column(name = "disponivel", nullable = false)
     private boolean disponivel;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "proprietario_id", nullable = false)
     private Pessoa proprietario;
 }
