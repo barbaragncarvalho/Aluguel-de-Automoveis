@@ -1,5 +1,5 @@
-# Nome do projeto
-O sistema (nome) facilita o processo de gestão de aluguéis de automóveis, permitindo efetuar, cancelar e modificar pedidos de aluguel através da Internet.
+# DriveON
+O sistema DriveON facilita o processo de gestão de aluguéis de automóveis, permitindo efetuar, cancelar e modificar pedidos de aluguel através da Internet.
 
 Para isso, empresas e bancos podem realizar cadastros de automóveis para disponibilizarem para aluguel. A empresa também pode disponibilizar, além de automóveis seus, automóveis dos seus clientes físicos, os quais não são usuários do sistema, mas possuem seus dados armazenados nele.
 
