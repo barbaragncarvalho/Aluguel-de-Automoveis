@@ -68,6 +68,12 @@ public class AutomovelController {
         return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/proprietario/{proprietarioId}")
+    public ResponseEntity<List<Automovel>> listarPorProprietario(@PathVariable Long proprietarioId) {
+        List<Automovel> automoveis = repository.findByProprietarioId(proprietarioId);
+        return new ResponseEntity<>(automoveis, HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     @Operation(summary = "Buscar automóvel por ID", description = "Busca automóvel pelo ID")
     @ApiResponse(responseCode = "200", description = "Automóvel encontrado")
