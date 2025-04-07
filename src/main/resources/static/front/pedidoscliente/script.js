@@ -2,10 +2,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabelaPedidos = document.getElementById('tabelaPedidos');
     const clienteInfo = document.querySelector('.informacoes p');
     
+    const clienteId = localStorage.getItem('clienteId');
+    const clienteNome = localStorage.getItem('clienteNome');
+
+    if (clienteNome) {
+        clienteInfo.textContent = clienteNome;
+    }
+
     // Carregar pedidos da API
     async function carregarPedidos() {
+        if (!clienteId) {
+            alert('Cliente não identificado!');
+            return;
+        }
         try {
-            const response = await fetch('http://localhost:8080/api/pedidos');
+            const response = await fetch(`http://localhost:8080/api/pedidos/cliente/${clienteId}`);
             const pedidos = await response.json();
             
             // Limpar tabela (exceto cabeçalho)

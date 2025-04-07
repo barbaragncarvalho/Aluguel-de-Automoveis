@@ -3,6 +3,7 @@ package com.example.aluguelautomoveis.controller;
 import com.example.aluguelautomoveis.enums.StatusPedido;
 import com.example.aluguelautomoveis.model.Automovel;
 import com.example.aluguelautomoveis.model.Pedido;
+import com.example.aluguelautomoveis.repository.AutomovelRepository;
 import com.example.aluguelautomoveis.repository.PedidoRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -24,6 +25,8 @@ import org.springframework.web.bind.annotation.*;
 public class PedidoController {
     @Autowired
     private PedidoRepository repository;
+    @Autowired
+    private AutomovelRepository automovelRepository;
 
     @PostMapping
     @Operation(summary = "Criar pedido", description = "Cadastra um novo pedido")
@@ -31,6 +34,19 @@ public class PedidoController {
     public ResponseEntity<Pedido> criar(@Valid @RequestBody Pedido pedido) {
         pedido.setData_pedido(new Date());
         pedido.setStatus(StatusPedido.EM_ANALISE);
+
+        Long automovelId = pedido.getAutomovel().getId();
+        Optional<Automovel> optAutomovel = automovelRepository.findById(automovelId);
+        if (!optAutomovel.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        Automovel automovel = optAutomovel.get();
+
+        if (!automovel.isDisponivel()) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        automovel.setDisponivel(false);
 
         Pedido pedidoSalvo = repository.save(pedido);
         return new ResponseEntity<>(pedidoSalvo, HttpStatus.CREATED);
@@ -52,6 +68,14 @@ public class PedidoController {
         Optional<Pedido> pedido = repository.findById(id);
         return pedido.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/cliente/{clienteId}")
+    @Operation(summary = "Listar pedidos por cliente", description = "Lista todos os pedidos de um cliente específico")
+    @ApiResponse(responseCode = "200", description = "Pedidos listados com sucesso")
+    public ResponseEntity<List<Pedido>> listarPorCliente(@PathVariable Long clienteId) {
+        List<Pedido> pedidos = repository.findByContratanteId(clienteId);
+        return new ResponseEntity<>(pedidos, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
