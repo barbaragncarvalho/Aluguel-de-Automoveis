@@ -3,38 +3,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabelaAvaliados = document.getElementById('tabelaPedidosAvaliados');
 
     async function carregarPedidos() {
-        const agenteId = localStorage.getItem('proprietarioId'); 
-        if (!agenteId) {
-            alert('Agente não identificado!');
-            return;
-        }
-
         try {
-            const responseAutomoveis = await fetch(`http://localhost:8080/api/automoveis/proprietario/${agenteId}?nocache=${Date.now()}`);
-            const automoveis = await responseAutomoveis.json();
-            const idsAutomoveis = automoveis.map(auto => auto.id);
-
             const responsePedidos = await fetch('http://localhost:8080/api/pedidos');
             const todosPedidos = await responsePedidos.json();
-
-            const pedidosFiltrados = todosPedidos.filter(pedido =>
-                idsAutomoveis.includes(pedido.automovel.id) &&
-                pedido.status !== 'CANCELADO'
-            );
-
+    
             limparTabela(tabelaPedidos);
             limparTabela(tabelaAvaliados);
-
-            const emAnalise = pedidosFiltrados.filter(p => p.status === 'EM_ANALISE');
-            const avaliados = pedidosFiltrados.filter(p =>
+    
+            const emAnalise = todosPedidos.filter(p => p.status === 'EM_ANALISE');
+            const avaliados = todosPedidos.filter(p => 
                 p.status === 'APROVADO' || p.status === 'REPROVADO'
             );
-
+    
             preencherTabela(tabelaPedidos, emAnalise, true); 
-            preencherTabela(tabelaAvaliados, avaliados, false); 
+            preencherTabela(tabelaAvaliados, avaliados, false);
+    
         } catch (error) {
             console.error('Erro ao carregar pedidos:', error);
-            alert('Falha ao carregar dados!');
+            alert('Desculpe, houve um erro ao carregar os dados!');
         }
     }
 
