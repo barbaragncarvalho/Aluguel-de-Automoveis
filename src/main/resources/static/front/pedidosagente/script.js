@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const responseAutomoveis = await fetch(`http://localhost:8080/api/automoveis/proprietario/${agenteId}`);
+            const responseAutomoveis = await fetch(`http://localhost:8080/api/automoveis/proprietario/${agenteId}?nocache=${Date.now()}`);
             const automoveis = await responseAutomoveis.json();
             const idsAutomoveis = automoveis.map(auto => auto.id);
 

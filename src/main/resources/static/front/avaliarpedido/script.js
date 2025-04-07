@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 alert('Avaliação registrada com sucesso!');
-                window.location.href = '../listacontratantes/lista.html';
+                window.location.href = '../pedidosagente/pedidos.html';
             } else {
                 const error = await response.json();
                 alert(`Erro: ${error.message || 'Falha no registro da avaliação'}`);

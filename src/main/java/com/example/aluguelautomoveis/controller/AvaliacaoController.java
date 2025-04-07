@@ -1,5 +1,6 @@
 package com.example.aluguelautomoveis.controller;
 
+import com.example.aluguelautomoveis.enums.StatusPedido;
 import com.example.aluguelautomoveis.model.Avaliacao;
 import com.example.aluguelautomoveis.model.Pedido;
 import com.example.aluguelautomoveis.repository.AvaliacaoRepository;
@@ -34,6 +35,13 @@ public class AvaliacaoController {
     public ResponseEntity<Avaliacao> criar(@Valid @RequestBody Avaliacao avaliacao, @RequestParam Long pedidoId) {
         Pedido pedido = pedidoRepository.findById(pedidoId)
                 .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
+
+        if (avaliacao.getResultado().equalsIgnoreCase("APROVADO")) {
+            pedido.setStatus(StatusPedido.APROVADO);
+        } else {
+            pedido.setStatus(StatusPedido.REPROVADO);
+        }
+        pedidoRepository.save(pedido); 
         avaliacao.setPedido(pedido);
         return new ResponseEntity<>(repository.save(avaliacao), HttpStatus.CREATED);
     }
